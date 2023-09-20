@@ -29,13 +29,17 @@ export class Combat {
 
     
     public combattre(monViking1: Viking, monViking2: Viking) {
+        let attaquant = this._viking1.force < this._viking2.force ? this.viking1 : this._viking2
+        let defenseur = this._viking1.force < this._viking2.force ? this.viking2 : this._viking1
 
-        while (monViking1.sante > 0 && monViking2.sante > 0) {
-            monViking1.attaque(monViking2);
-            monViking2.attaque(monViking1);
+        while (monViking1.sante > 0 && monViking2.sante > 0) {       
+            attaquant.attaque(defenseur)
+
+            const intermediaire = attaquant
+            attaquant = defenseur
+            defenseur = attaquant
         }        
     }
-
-
     
 }
+

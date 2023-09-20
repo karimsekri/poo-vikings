@@ -10,7 +10,7 @@ export class Viking {
     constructor(monNom: string, maSante : number, maForce: number, monArme : Arme) {
       this._nom = monNom;
       this._sante = maSante;
-      this._force = maForce + monArme.force;
+      this._force = maForce 
       this._arme = monArme;
     }
 
@@ -33,7 +33,7 @@ export class Viking {
     }
     
     public get force() : number {
-        return this._force
+        return this._force + this._arme.force;
     }
     
     public set force(v : number) {
@@ -49,10 +49,17 @@ export class Viking {
     }
     
     public attaque(vikingCible : Viking){
-        if (this.sante > 0) {
-            vikingCible.sante -= this.force;  
+        const isCoupCritique = Math.random() < 0.1
+        let forceCombat = this.force
+        
+        if(isCoupCritique){
+            forceCombat = this.force * 2
         }
         
+        vikingCible.sante -= forceCombat
+          
+        if (this.sante < 0) {
+            vikingCible.sante = 0
+        }        
     }
-    
   }
