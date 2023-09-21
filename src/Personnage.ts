@@ -14,7 +14,7 @@ export class Personnage {
     private _intelligence: number
     private _pointsMana : number
     private _chanceCoupCritique : number
-    private _equipement : Equipement
+    //private _equipement : Equipement
 
 
 
@@ -85,26 +85,26 @@ export class Personnage {
    public  set chanceCoupCritique(v : number) {
        this._chanceCoupCritique = v;
    }
-   public  get equipement() {
-       return this._equipement;
-   }
-   public  set equipement(v : Equipement) {
-       this._equipement = v;
-   }
+//    public  get equipement() {
+//        return this._equipement;
+//    }
+//    public  set equipement(v : Equipement) {
+//        this._equipement = v;
+//    }
 
-   constructor(nom : string, niveau : number, nbrePointExperience : number, type : Metier, sante : number, force : number, 
-                vitesse : number, intelligence : number, pointsMana : number, chanceCoupCritique : number, equipement : Equipement){ {
-        this._nom = nom;
-        this._niveau = niveau;
-        this._nbrePointExperience = nbrePointExperience;
-        this._type = type;
-        this._sante = sante;
-        this._force = force;
-        this._vitesse = vitesse;
-        this._intelligence = intelligence;
-        this._pointsMana = pointsMana;
-        this._chanceCoupCritique = chanceCoupCritique; 
-        this._equipement = equipement;       
+//    constructor( equipement : Equipement){ 
+    constructor(monMetier:Metier){ 
+        this._nom = '';
+        this._niveau = 1;
+        this._nbrePointExperience = 0;
+        this._type = monMetier;
+        this._sante = 50 ;
+        this._force = 10;
+        this._vitesse = 10;
+        this._intelligence = 10;
+        this._pointsMana = 50;
+        this._chanceCoupCritique = 2; 
+        //this._equipement = equipement;       
     }
   
 }

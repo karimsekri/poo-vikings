@@ -1,5 +1,5 @@
 export class Equipement {
-    constructor(parameters) {
+    constructor() {
         
     }
 }
