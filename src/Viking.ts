@@ -1,6 +1,6 @@
 import { Arme } from "./Arme"
 
-export class Viking {
+export class Viking extends Metier {
   
     private _nom : string
     private _sante: number
