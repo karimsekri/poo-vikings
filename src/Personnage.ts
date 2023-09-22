@@ -98,13 +98,28 @@ export class Personnage {
         this._niveau = 1;
         this._nbrePointExperience = 0;
         this._type = monMetier;
-        this._sante = 50 ;
-        this._force = 10;
-        this._vitesse = 10;
-        this._intelligence = 10;
-        this._pointsMana = 50;
-        this._chanceCoupCritique = 2; 
+        this._sante = 50 + this._type.santebonus;
+        this._force = 10 + this._type.forcebonus;
+        this._vitesse = 10 + this._type.vitessebonus;
+        this._intelligence = 10 + this._type.intelligencebonus;
+        this._pointsMana = 50 + this._type.pointsManabonus;
+        this._chanceCoupCritique = 0.02 + this._type.chanceCoupCritiquebonus; 
         //this._equipement = equipement;       
+    }
+
+    public attaque(personnageCible : Personnage, maChanceCoupCritique : number){
+        const isCoupCritique = Math.random() < maChanceCoupCritique
+        let forceCombat = this.force
+        
+        if(isCoupCritique){
+            forceCombat = this.force * 2
+        }
+        
+        personnageCible.sante -= forceCombat
+          
+        if (this.sante < 0) {
+            personnageCible.sante = 0
+        }        
     }
   
 }

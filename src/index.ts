@@ -4,7 +4,12 @@
 
 import { Readline } from "readline/promises";
 import { Personnage } from "./Personnage";
-import { Viking } from "./Viking";
+import { Viking } from "./Jobs/Viking";
+import { CombatHandler } from "./Combats/CombatHandler";
+import { Metier } from "./Metier";
+import { Chevalier } from "./Jobs/Chevaliers";
+import { Archer } from "./Jobs/Archers";
+import { Magicien } from "./Jobs/Magiciens";
 // import { ReadLine } from "readline";
 
 
@@ -25,13 +30,71 @@ import { Viking } from "./Viking";
 // console.log(viking1.nom,"Santé : ",viking1.sante, "Force : ",viking1.force);
 // console.log(viking2.nom,"Santé : ",viking2.sante, "Force : ",viking2.force);
 
-const readline = require('readline');
-const rl = readline.createInterface(process.stdin, process.stdout);
- 
-rl.question('quel est le nom du personnage? ', (name:string) => {
-    console.log('Nom du personnage est ' + name);
-    rl.close();
-});
+// let nomDuPersonnage1 = '';
+// let nomMetierDuPersonnage1 = '';
+
+// const readline = require('readline');
+// const rl = readline.createInterface(process.stdin, process.stdout);
+// rl.question('quel est le nom du personnage? ', (name:string) => {
+//     nomDuPersonnage1 = name;
+//     console.log('Nom du personnage est ' + name);
+//     rl.close();
+    
+//     const rl2 = readline.createInterface(process.stdin, process.stdout);
+//     rl2.question('quel est le metier du personnage? ', (sonMetier : string) => {
+//     nomMetierDuPersonnage1 = sonMetier;
+//     //console.log('Metier du personnage est ' + sonMetier);
+//     rl2.close();
+
+//     // Une fois que les deux réponses ont été obtenues, affichez-les ici
+//     console.log('Nom du personnage : ' + nomDuPersonnage1);
+//     console.log('Métier du personnage : ' + nomMetierDuPersonnage1);
+
+
+//     switch (nomMetierDuPersonnage1) {
+//         case 'viking':
+//             const viking1 = new Viking();
+//             const personnageViking = new Personnage(viking1);
+//             personnageViking.nom = nomDuPersonnage1;
+//             console.log(personnageViking);
+//             break;
+    
+//         case 'archer':
+//             const archer1 = new Archer();
+//             const personnageArcher = new Personnage(archer1);
+//             personnageArcher.nom = nomDuPersonnage1;
+//             console.log(personnageArcher);
+//             break;
+//         case 'chevalier':
+//             const chevalier1 = new Chevalier();
+//             const personnageChevalier = new Personnage(chevalier1);
+//             personnageChevalier.nom = nomDuPersonnage1; 
+//             console.log(personnageChevalier);
+//             break;
+//         case 'magicien':
+//             const magicien1 = new Magicien();
+//             const personnageMagicien = new Personnage(magicien1);
+//             personnageMagicien.nom = nomDuPersonnage1; 
+//             console.log(personnageMagicien);
+//         default:
+//             break;
+//     }
+
+//     });
+// });
+
+const unArcher = new Archer();
+const unViking = new Viking();
+const personnage1 = new Personnage(unArcher);
+personnage1.nom = "Jean";
+const personnage2 = new Personnage(unViking);
+personnage2.nom = "Anthony";
+
+const combat1 = new CombatHandler(personnage1, personnage2);
+combat1.combattre(personnage1, personnage2);
+
+
+
 
 
 
