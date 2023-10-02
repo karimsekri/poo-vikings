@@ -1,12 +1,12 @@
-import { Arme } from "../Arme";
-import { Metier } from "../Metier";
 
-export class Chevalier extends Metier {
+import { Metier } from "../Metier";
+import { Personnage } from "../Personnage";
+
+export class Chevalier extends Personnage {
      
-   constructor() {
-      super(40, 5, 1, 1, 5, 0.03);
-      this.nomMetier = 'Chevaliers';
-      this.capacitéSpecial = 'bouclier';
+   constructor(nom:string, monMetier:Metier = new Metier('Chevaliers',40, 5, 1, 1, 5, 0.03,'bouclier')) {
+      super(nom,monMetier);
+     
       
   }
     

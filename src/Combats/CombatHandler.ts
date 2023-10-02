@@ -1,3 +1,5 @@
+import { Archer } from "../Jobs/Archers";
+import { Viking } from "../Jobs/Viking";
 import { Personnage } from "../Personnage";
 
 export class CombatHandler {
@@ -28,29 +30,30 @@ export class CombatHandler {
     }
 
     
-    // public combattre(monViking1: Viking, monViking2: Viking) {
-    //     let attaquant = this._viking1.force < this._viking2.force ? this.viking1 : this._viking2
-    //     let defenseur = this._viking1.force < this._viking2.force ? this.viking2 : this._viking1
+    public combattre() {
+        let attaquant = this._personnage1.vitesse > this._personnage2.vitesse ? this._personnage1 : this._personnage2
+        let defenseur = this._personnage1.vitesse < this._personnage2.vitesse ? this._personnage2 : this._personnage1
 
-    //     while (monViking1.sante > 0 && monViking2.sante > 0) {       
-    //         attaquant.attaque(defenseur)
+        while (this._personnage1.sante > 0 && this._personnage2.sante > 0) {       
+            attaquant.attaque(defenseur, defenseur.chanceCoupCritique)
 
-    //         const intermediaire = attaquant
-    //         attaquant = defenseur
-    //         defenseur = attaquant
-    //     }        
+            const intermediaire = attaquant
+            attaquant = defenseur
+            defenseur = attaquant
+        } 
+               
+    }
+
+    // public combattre(monPersonnage1: Personnage, monPersonnage2: Personnage) {
+    //     let attaquant = this.comparaisonVitesse(monPersonnage1, monPersonnage2);
+    //     attaquant[0].attaque(attaquant[1],attaquant[0].chanceCoupCritique);
     // }
 
-    public combattre(monPersonnage1: Personnage, monPersonnage2: Personnage) {
-        let ordreAttaque = this.comparaisonVitesse(monPersonnage1, monPersonnage2);
-        ordreAttaque[0].attaque(ordreAttaque[1],ordreAttaque[0].chanceCoupCritique);
-    }
-
-    public comparaisonVitesse(monPersonnage1: Personnage, monPersonnage2: Personnage) : Personnage[]{
-        let attaquant = this._personnage1.vitesse > this._personnage2.vitesse ? this._personnage1 : this._personnage2
-        let cible = this._personnage1.vitesse < this._personnage2.vitesse ? this._personnage1 : this._personnage2
-        return [attaquant,cible]
-    }
+    // public comparaisonVitesse(monPersonnage1: Personnage, monPersonnage2: Personnage) : Personnage[]{
+    //     let attaquant = this._personnage1.vitesse > this._personnage2.vitesse ? this._personnage1 : this._personnage2
+    //     let cible = this._personnage1.vitesse < this._personnage2.vitesse ? this._personnage1 : this._personnage2
+    //     return [attaquant,cible]
+    // }
     
 }
 

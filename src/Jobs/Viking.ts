@@ -1,14 +1,11 @@
-import { Arme } from "../Arme"
-import { Metier } from "../Metier"
 
-export class Viking extends Metier {
+import { Metier } from "../Metier";
+import { Personnage } from "../Personnage";
+
+export class Viking extends Personnage {
     
-    
-    constructor() {
-        super(25, 4, 2, 0, 0, 0.08);
-        this.nomMetier = 'Viking';
-        this.capacitéSpecial = 'vol de vie'
-        
-    }   
+    constructor(nom: string, monMetier:Metier = new Metier('Viking', 25, 4, 2, 0, 0, 0.08, 'Attaque surprise')) {
+        super(nom, monMetier);
+    }
 
 }

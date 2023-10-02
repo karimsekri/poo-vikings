@@ -1,8 +1,9 @@
-import { Equipement } from "./Equipement"
+import { Equipement } from "./Objets/Equipement"
 import { Metier } from "./Metier"
+import { IObjet } from "./Objets/IObjet"
 
 
-export class Personnage {
+export abstract class Personnage {
 
     private _nom : string 
     private _niveau : number
@@ -14,9 +15,24 @@ export class Personnage {
     private _intelligence: number
     private _pointsMana : number
     private _chanceCoupCritique : number
-    //private _equipement : Equipement
+    private _equipement: Equipement[]
 
-
+     
+    constructor(nom: string, monMetier:Metier, niveau = 1, nbrePointExperience = 0,sante = 50, force = 10, vitesse = 10, 
+        intelligence = 10, pointsMana = 50, chanceCoupCritique = 0.02, equipement : Equipement[] ) {
+                     
+        this._nom = nom;
+        this._niveau = niveau;
+        this._nbrePointExperience = nbrePointExperience;
+        this._type = monMetier;
+        this._sante = sante;
+        this._force = force;
+        this._vitesse = vitesse;
+        this._intelligence = intelligence;
+        this._pointsMana = pointsMana;
+        this._chanceCoupCritique = chanceCoupCritique;
+        this._equipement = equipement;       
+    }
 
 	public  get nom() {
 		return this._nom;
@@ -47,65 +63,52 @@ export class Personnage {
    }
 
    public  get sante() {
-       return this._sante;
+       return this._sante + this._type.santebonus;
    }
 
    public  set sante(v : number) {
-       this._sante = v;
+       this._sante = v
    }
 
    public  get force() {
-       return this._force;
+       return this._force + this._type.forcebonus;
    }
    public  set force(v : number) {
-       this._force = v;
+       this._force = v ;
    }
 
    public  get vitesse() {
-       return this._vitesse;
+       return this._vitesse + this._type.vitessebonus;
    }
    public  set vitesse(v : number) {
-       this._vitesse = v;
+       this._vitesse = v ;
    }
    public  get intelligence() {
-       return this._intelligence;
+       return this._intelligence + this._type.intelligencebonus;
    }
    public  set intelligence(v : number) {
-       this._intelligence = v;
+       this._intelligence = v ;
    }
    public  get pointsMana() {
-       return this._pointsMana;
+       return this._pointsMana + this._type.pointsManabonus;
    }
    public  set pointsMana(v : number) {
-       this._pointsMana = v;
+       this._pointsMana = v ;
    }
    public  get chanceCoupCritique() {
-       return this._chanceCoupCritique;
+       return this._chanceCoupCritique  + this._type.chanceCoupCritiquebonus;
    }
    public  set chanceCoupCritique(v : number) {
-       this._chanceCoupCritique = v;
+       this._chanceCoupCritique = v ;
    }
-//    public  get equipement() {
-//        return this._equipement;
-//    }
-//    public  set equipement(v : Equipement) {
-//        this._equipement = v;
-//    }
+   public  get equipement() {
+       return this._equipement;
+   }
+   public  set equipement(v : Equipement) {
+       this._equipement = v;
+   }
 
-//    constructor( equipement : Equipement){ 
-    constructor(monMetier:Metier){ 
-        this._nom = '';
-        this._niveau = 1;
-        this._nbrePointExperience = 0;
-        this._type = monMetier;
-        this._sante = 50 + this._type.santebonus;
-        this._force = 10 + this._type.forcebonus;
-        this._vitesse = 10 + this._type.vitessebonus;
-        this._intelligence = 10 + this._type.intelligencebonus;
-        this._pointsMana = 50 + this._type.pointsManabonus;
-        this._chanceCoupCritique = 0.02 + this._type.chanceCoupCritiquebonus; 
-        //this._equipement = equipement;       
-    }
+
 
     public attaque(personnageCible : Personnage, maChanceCoupCritique : number){
         const isCoupCritique = Math.random() < maChanceCoupCritique
@@ -121,5 +124,6 @@ export class Personnage {
             personnageCible.sante = 0
         }        
     }
-  
+
+    
 }

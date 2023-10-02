@@ -1,6 +1,4 @@
 
-import { Viking } from "./Jobs/Viking";
-
 export class Metier {
 
     private _nomMetier : string
@@ -10,18 +8,18 @@ export class Metier {
     private _intelligencebonus: number
     private _pointsManabonus : number
     private _chanceCoupCritiquebonus : number
-    private _capacitéSpecial: string;
+    private _capaciteSpecial: string;
   
-    constructor( maSanteBonus : number, maForceBonus: number, maVitesseBonus: number, maIntelligenceBonus: number, 
-                maPointsManabonus: number, maChanceCoupCritiqueBonus: number){ 
-      this._nomMetier = '';
+    constructor(nomMetier: string, maSanteBonus : number, maForceBonus: number, maVitesseBonus: number, maIntelligenceBonus: number, 
+                maPointsManabonus: number, maChanceCoupCritiqueBonus: number, capaciteSpecial:string){ 
+      this._nomMetier = nomMetier;
       this._santebonus = maSanteBonus;
       this._forcebonus= maForceBonus;
       this._vitessebonus = maVitesseBonus;
       this._intelligencebonus = maIntelligenceBonus;
       this._pointsManabonus = maPointsManabonus;
       this._chanceCoupCritiquebonus = maChanceCoupCritiqueBonus;
-      this._capacitéSpecial = '';     
+      this._capaciteSpecial = capaciteSpecial;     
     }
     
     public get nomMetier() : string {
@@ -73,11 +71,11 @@ export class Metier {
     public set chanceCoupCritiquebonus(v : number) {
         this._chanceCoupCritiquebonus = v;
     }
-    public get capacitéSpecial(): string {
-        return this._capacitéSpecial;
+    public get capaciteSpecial(): string {
+        return this._capaciteSpecial;
     }
-    public set capacitéSpecial(value: string) {
-        this._capacitéSpecial = value;
+    public set capaciteSpecial(value: string) {
+        this._capaciteSpecial = value;
     }
     
    

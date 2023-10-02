@@ -23,6 +23,6 @@ npm install
 ``` 
 4. Lancez le projet
 ```bash
-npm run dev
+npm run dev 
 ```
 5. Modifiez le fichier `src/index.ts` pour commencer à coder

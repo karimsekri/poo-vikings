@@ -10,6 +10,8 @@ import { Metier } from "./Metier";
 import { Chevalier } from "./Jobs/Chevaliers";
 import { Archer } from "./Jobs/Archers";
 import { Magicien } from "./Jobs/Magiciens";
+import { Voleur } from "./Jobs/Voleurs";
+import { Epee } from "./Objets/Epee";
 // import { ReadLine } from "readline";
 
 
@@ -83,15 +85,21 @@ import { Magicien } from "./Jobs/Magiciens";
 //     });
 // });
 
-const unArcher = new Archer();
-const unViking = new Viking();
-const personnage1 = new Personnage(unArcher);
-personnage1.nom = "Jean";
-const personnage2 = new Personnage(unViking);
-personnage2.nom = "Anthony";
+const unViking = new Viking('Le Viking');
+const unArcher = new Archer('Le Archer');
 
-const combat1 = new CombatHandler(personnage1, personnage2);
-combat1.combattre(personnage1, personnage2);
+//console.log(unViking, unArcher);
+
+// const combat1 = new CombatHandler(unViking,unArcher);
+// combat1.combattre();
+
+// console.log(unViking,unArcher);
+
+const epee1 = new Epee('epee1',10,45,1,80);
+console.log(epee1);
+
+unViking.utiliser(epee1);
+
 
 
 
